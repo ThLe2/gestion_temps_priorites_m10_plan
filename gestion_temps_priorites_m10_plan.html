@@ -1,0 +1,106 @@
+<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Mon plan d'action</title><style>
+:root{--fonce:#5E1349;--prune:#8C1E70;--clair:#F4E6EE;--rose:#C77BAA;--trame:#E8DCE5;--fond:#FAF6F8;--texte:#3C3C3C;--gris:#8A7A85;--ok:#2E7D4F;--ko:#B3261E;--bleu:#2F6DB3;--vert:#3C8D5A;--orange:#C77700}
+*{box-sizing:border-box}body{margin:0;font-family:Arial,Helvetica,sans-serif;color:var(--texte);background:var(--fond);font-size:15px;line-height:1.45}
+header{background:var(--fonce);color:#fff;padding:16px 22px}header .k{font-size:12px;letter-spacing:2px;text-transform:uppercase;color:#EAD3E3;font-weight:700}header h1{margin:4px 0 0;font-size:22px}
+main{max-width:1180px;margin:0 auto;padding:16px}
+.contexte{background:#fff;border-left:5px solid var(--prune);padding:12px 16px;margin-bottom:14px}
+.contexte h2{margin:0 0 6px;font-size:17px;color:var(--fonce)}.contexte ul{margin:6px 0 0;padding-left:20px}
+.etapes{display:flex;gap:8px;margin:0 0 12px;flex-wrap:wrap}.etapes span{padding:6px 12px;border-radius:16px;background:#fff;border:1px solid var(--trame);font-size:13px;color:var(--gris)}
+.etapes span.on{background:var(--prune);color:#fff;border-color:var(--prune)}.etapes span.fait{background:var(--clair);color:var(--fonce)}
+.grille{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:16px;align-items:start}
+@media(max-width:860px){.grille{grid-template-columns:1fr}}
+.panneau{background:#fff;border:1px solid var(--trame);border-radius:8px;padding:12px}
+.panneau h3{margin:0 0 10px;font-size:16px;color:var(--fonce)}
+.tache{border:1px solid var(--trame);border-radius:8px;padding:10px;margin-bottom:8px;background:#fff}
+.tache.placee{border-color:var(--prune);background:var(--clair)}.tache.fixe{background:#f3f0f2}
+.tache .nom{font-weight:700;color:var(--fonce)}.tache .nom input{width:100%;padding:6px;border:1px solid var(--trame);border-radius:4px;font:inherit}
+.ligne{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:8px;font-size:14px}
+select,button,input[type=text]{font:inherit}select{padding:5px;border:1px solid #cdbfc8;border-radius:4px;background:#fff}
+button{cursor:pointer;border:0;border-radius:6px;padding:7px 13px;background:var(--prune);color:#fff}
+button.sec{background:#fff;color:var(--prune);border:1px solid var(--prune)}button:disabled,select:disabled,input:disabled{opacity:.55;cursor:not-allowed}
+.badge{font-size:12px;padding:2px 8px;border-radius:10px;background:var(--trame);color:var(--fonce)}
+.prio{font-size:13px;color:var(--fonce)}
+.jour{position:relative;margin-left:52px;border-left:2px solid var(--trame)}
+.h{position:absolute;left:-52px;width:calc(100% + 52px);border-top:1px solid var(--trame);font-size:12px;color:var(--gris)}
+.h span{position:relative;top:-8px;background:#fff;padding-right:4px}
+.ev{position:absolute;left:6px;right:6px;border-radius:6px;padding:3px 8px;font-size:12.5px;color:#fff;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,.15)}
+.ev b{display:block;font-size:13px}.ev.c-tache{background:var(--prune)}.ev.c-casting{background:var(--bleu)}.ev.c-autre{background:var(--vert)}.ev.c-pause{background:#9a8c95}.ev.c-imprevu{background:var(--orange)}.ev.c-fixe{background:#7a6a74}
+.ev.chev{outline:3px solid var(--ko)}.ev .cloche{float:right}
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0}
+.verif{background:#fff;border:1px solid var(--trame);border-radius:8px;padding:12px 16px}
+.verif li{margin:5px 0;list-style:none;padding-left:4px}.verif ul{padding-left:0;margin:6px 0}
+.ok{color:var(--ok)}.ko{color:var(--ko)}
+.bilan{background:var(--clair);border:2px solid var(--prune);border-radius:8px;padding:12px 16px;margin-top:12px}
+.reporte{font-size:13px;color:var(--gris);margin-top:6px}
+footer{text-align:center;font-size:12px;color:var(--gris);padding:16px}
+
+.col{background:#f3eef1;border-radius:8px;padding:10px;min-height:220px}.col h4{margin:0 0 8px;color:var(--fonce)}.kb{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+@media(max-width:760px){.kb{grid-template-columns:1fr}}
+.carte{background:#fff;border-radius:6px;padding:8px 10px;margin-bottom:8px;box-shadow:0 1px 3px rgba(0,0,0,.12);font-size:14px}.carte .bt{display:flex;gap:4px;margin-top:6px;flex-wrap:wrap}.carte .bt button{padding:3px 8px;font-size:12px}
+.etq{display:inline-block;background:var(--ko);color:#fff;font-size:11px;border-radius:8px;padding:1px 7px;margin-bottom:4px}.ech{font-size:12px;color:var(--fonce)}
+.champ{display:flex;gap:8px;flex-wrap:wrap;margin:8px 0}.champ input[type=text]{flex:1;min-width:220px;padding:7px;border:1px solid #cdbfc8;border-radius:4px}
+.todo li{list-style:none;margin:6px 0}.todo{padding-left:0}.fait{text-decoration:line-through;color:var(--gris)}.note{background:#FFF8E1;border-left:4px solid #E0B000;padding:6px 10px;margin:6px 0;font-size:14px}
+.chrono{font-size:56px;font-weight:700;color:var(--fonce);text-align:center;font-variant-numeric:tabular-nums;margin:6px 0}
+.chrono.alerte{color:var(--ko)}textarea{width:100%;min-height:220px;font:inherit;padding:10px;border:1px solid #cdbfc8;border-radius:6px}
+.cpt{font-size:13px;color:var(--gris);text-align:right}.q{border-bottom:1px solid var(--trame);padding:10px 0}.q .opts{display:flex;gap:8px;flex-wrap:wrap;margin-top:6px}
+.q .opts label{border:1px solid var(--trame);border-radius:16px;padding:4px 12px;cursor:pointer;font-size:14px;background:#fff}.q .opts input{margin-right:4px}
+.barre{height:16px;background:var(--trame);border-radius:8px;overflow:hidden}.barre div{height:100%;background:var(--prune)}
+.axe{margin:10px 0}.axe .l{display:flex;justify-content:space-between;font-weight:700;color:var(--fonce);margin-bottom:3px}
+.cmp td,.cmp th{padding:8px;border:1px solid var(--trame)}.cmp{border-collapse:collapse;width:100%;background:#fff}.cmp th{background:var(--fonce);color:#fff}
+label.bl{display:block;margin:8px 0 3px;font-weight:700;color:var(--fonce);font-size:14px}.f input,.f select{width:100%;padding:7px;border:1px solid #cdbfc8;border-radius:4px;font:inherit}</style><script src="jspdf.umd.min.js"></script></head><body>
+<header><div class="k">Gestion du temps et des priorités · Module 10</div><h1>Mon plan d'action</h1></header><main><div class="contexte"><h2>Mon plan d'action</h2><p>Construisez trois engagements concrets à partir de vos axes de progrès. Un bon engagement est <b>précis</b> (quoi, quand), <b>daté</b> et <b>mesurable</b> : vous saurez dans un mois s'il est tenu.</p>
+<p>Une fois votre plan validé, vous téléchargerez <b>votre engagement en PDF</b>. Ce document est pour vous : il ne sera ni signé ni transmis. Gardez-le avec vous et relisez-le aussi souvent que nécessaire.</p>
+<p>Exemple : <i>Interruptions → time blocking → un bloc de concentration de 9 h à 10 h 30, notifications coupées, dès lundi → indicateur : 4 matinées sur 5 respectées.</i></p></div>
+<div id="info"></div><div id="eng"></div><div class="panneau f"><label class="bl" for="point">Date à laquelle je ferai le point</label><input type="date" id="point"></div>
+<div class="actions"><button id="btnVerif">Vérifier mon plan</button><button class="sec" id="btnReset">Recommencer</button></div><div id="retour"></div></main>
+<footer>TMK Performances - N° Siret : 49841924100027 - Code NAF : 8559A</footer><script>
+const $=s=>document.querySelector(s);const RAPIDE=new URLSearchParams(location.search).has('rapide');
+const mmss=s=>`${Math.floor(s/60)}:${String(s%60).padStart(2,'0')}`;
+function stocker(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}function lire(k){try{return JSON.parse(localStorage.getItem(k))}catch(e){return null}}
+const AXES=['Priorités','Planification','Interruptions','Procrastination et perfectionnisme','Imprévus et équilibre'];
+const OUTILS=['Matrice d\'Eisenhower','Loi de Pareto','Loi de Parkinson (heure de fin, « suffisant »)','Technique Pomodoro','Time blocking','Règle des 2 minutes','Tampons et gestion des imprévus','Agenda avec rappels','Tableau Kanban','Liste de tâches et notes rapides','Parade à un voleur de temps'];
+let E=[],valide=false;
+function init(){const d=lire('gtp_axes');E=[0,1,2].map(i=>({axe:d&&d.axes?d.axes[i]:'',outil:'',action:'',date:'',ind:''}));valide=false;$('#point').value='';$('#point').disabled=false;
+ $('#info').innerHTML=d&&d.axes?`<div class="bilan">Vos trois axes de progrès, issus de l'auto-diagnostic du module 1 : <b>${d.axes.join(' · ')}</b>. Vous pouvez les modifier.</div>`:`<div class="bilan">Choisissez vos trois axes de progrès (ceux de votre auto-diagnostic du module 1).</div>`;
+ $('#btnVerif').disabled=false;$('#btnVerif').textContent='Vérifier mon plan';$('#retour').innerHTML='';rendre();}
+function rendre(){$('#eng').innerHTML=E.map((e,i)=>`<div class="panneau f" style="margin-bottom:12px"><h3>Engagement ${i+1}</h3>
+ <label class="bl">Axe de progrès</label><select data-i="${i}" data-k="axe" ${valide?'disabled':''}><option value="">—</option>${AXES.map(a=>`<option ${a===e.axe?'selected':''}>${a}</option>`).join('')}</select>
+ <label class="bl">Outil ou méthode retenu</label><select data-i="${i}" data-k="outil" ${valide?'disabled':''}><option value="">—</option>${OUTILS.map(a=>`<option ${a===e.outil?'selected':''}>${a}</option>`).join('')}</select>
+ <label class="bl">Action concrète (quoi, quand, comment)</label><input type="text" data-i="${i}" data-k="action" value="${e.action.replace(/"/g,'&quot;')}" ${valide?'disabled':''} placeholder="Ex. : traiter mes mails à 11 h et 16 h seulement">
+ <label class="bl">Date de démarrage</label><input type="date" data-i="${i}" data-k="date" value="${e.date}" ${valide?'disabled':''}>
+ <label class="bl">Indicateur de réussite (mesurable)</label><input type="text" data-i="${i}" data-k="ind" value="${e.ind.replace(/"/g,'&quot;')}" ${valide?'disabled':''} placeholder="Ex. : 4 jours sur 5 respectés"></div>`).join('');
+ document.querySelectorAll('#eng [data-k]').forEach(x=>x.oninput=x.onchange=()=>{E[+x.dataset.i][x.dataset.k]=x.value;});}
+$('#btnVerif').onclick=()=>{const auj=new Date().toISOString().slice(0,10);const r=[];
+ E.forEach((e,i)=>{const n=i+1;r.push([e.axe&&e.outil,`Engagement ${n} : axe et outil choisis.`]);
+  r.push([(e.action.trim().match(/\S+/g)||[]).length>=5,`Engagement ${n} : l'action est décrite précisément (au moins 5 mots).`]);
+  r.push([!!e.date&&e.date>=auj,`Engagement ${n} : une date de démarrage, aujourd'hui ou plus tard.`]);
+  r.push([/\d/.test(e.ind),`Engagement ${n} : l'indicateur est mesurable (il contient un chiffre).`]);});
+ r.push([new Set(E.map(e=>e.axe)).size===3,'Les trois engagements portent sur trois axes différents.']);
+ r.push([!!$('#point').value&&E.every(e=>!e.date||$('#point').value>e.date),'Le point d\'étape est fixé après le démarrage des engagements.']);
+ const tout=r.every(x=>x[0]);let h=`<div class="verif"><b>Vérification</b><ul>${r.map(x=>`<li class="${x[0]?'ok':'ko'}">${x[0]?'✔':'✘'} ${x[1]}</li>`).join('')}</ul></div>`;
+ if(tout){valide=true;rendre();$('#point').disabled=true;$('#btnVerif').disabled=true;$('#btnVerif').textContent='Plan validé';stocker('gtp_plan',{E,point:$('#point').value});
+  h+=`<div class="bilan"><b>Votre plan est prêt.</b> Téléchargez maintenant votre engagement en PDF${new URLSearchParams(location.search).has('360')?', puis déposez-le dans 360Learning : il atteste que vous avez réalisé le module':''}.<ul><li><b>Gardez-le avec vous</b> : imprimé sur votre bureau, ou enregistré là où vous le retrouverez facilement.</li><li><b>Relisez-le</b> aussi souvent que nécessaire, en début de semaine par exemple, et avant votre point d'étape.</li><li>Notez la date du point d'étape dans votre agenda.</li></ul><div class="actions"><button id="btnPdf">Télécharger mon engagement (PDF)</button></div></div>`;}
+ else h+='<p class="ko">Complétez les points signalés, puis vérifiez à nouveau.</p>';$('#retour').innerHTML=h;if(tout)$('#btnPdf').onclick=pdfEngagement;};
+function pdfEngagement(){if(!window.jspdf){alert('Le PDF ne peut pas être créé sur ce poste. Imprimez la page à la place (Ctrl + P).');return;}
+ const net=s=>String(s||'').replace(/[\u202f\u00a0]/g,' ').replace(/[\u2018\u2019]/g,"'").replace(/[\u201c\u201d]/g,'"').replace(/\u2192/g,'->').replace(/[^\x20-\xff\u0152\u0153\u20ac\u2013\u2014\u2026]/g,'');
+ const fr=s=>s?s.split('-').reverse().join('/'):'-';const auj=new Date();const aujs=auj.toISOString().slice(0,10);
+ const d=new window.jspdf.jsPDF({unit:'mm',format:'a4'});const W=210,H=297,M=18,L=W-2*M;let y;
+ const PR=[140,30,112],FO=[94,19,73],CL=[244,230,238],TX=[60,60,60],GR=[138,122,133];
+ const pied=()=>{d.setFont('helvetica','normal');d.setFontSize(8);d.setTextColor(...GR);d.text('TMK Performances - N° Siret : 49841924100027 - Code NAF : 8559A',W/2,H-10,{align:'center'});};
+ const saut=h=>{if(y+h>H-20){pied();d.addPage();y=20;}};
+ d.setFillColor(...FO);d.rect(0,0,W,32,'F');d.setTextColor(234,211,227);d.setFont('helvetica','bold');d.setFontSize(9);d.text('GESTION DU TEMPS ET DES PRIORITÉS',M,12);
+ d.setTextColor(255,255,255);d.setFontSize(22);d.text('Mon engagement',M,24);d.setFont('helvetica','normal');d.setFontSize(10);d.text('Établi le '+fr(aujs),W-M,24,{align:'right'});
+ y=42;const rap=['Gardez ce document avec vous : imprimé sur votre bureau, ou enregistré là où vous le retrouverez facilement.','Relisez-le aussi souvent que nécessaire, en début de semaine par exemple, et avant votre point d\'étape.'];
+ d.setFontSize(10);const lr=rap.map(t=>d.splitTextToSize(t,L-14));const hr=8+lr.reduce((a,l)=>a+l.length*4.6+1.5,0);
+ d.setFillColor(...CL);d.setDrawColor(...PR);d.setLineWidth(.6);d.rect(M,y,L,hr,'FD');d.setFillColor(...PR);d.rect(M,y,2.2,hr,'F');
+ let yy=y+6.5;d.setTextColor(...FO);lr.forEach(l=>{d.setFont('helvetica','bold');d.text('•',M+6,yy);d.setFont('helvetica','normal');d.text(l,M+10,yy);yy+=l.length*4.6+1.5;});y+=hr+8;
+ E.forEach((e,i)=>{const rows=[['Outil ou méthode',net(e.outil)],['Action concrète',net(e.action)],['Date de démarrage',fr(e.date)],['Indicateur de réussite',net(e.ind)]];
+  d.setFontSize(10.5);const lw=rows.map(r=>d.splitTextToSize(r[1],L-56));const hb=11+lw.reduce((a,l)=>a+Math.max(1,l.length)*5+3,0);saut(hb+6);
+  d.setFillColor(...PR);d.rect(M,y,L,9,'F');d.setTextColor(255,255,255);d.setFont('helvetica','bold');d.setFontSize(12);d.text('Engagement '+(i+1)+' - '+net(e.axe),M+4,y+6.2);
+  d.setDrawColor(232,220,229);d.setLineWidth(.3);d.rect(M,y,L,hb);let ry=y+15;
+  rows.forEach((r,k)=>{d.setFont('helvetica','bold');d.setFontSize(10);d.setTextColor(...FO);d.text(r[0],M+4,ry);d.setFont('helvetica','normal');d.setFontSize(10.5);d.setTextColor(...TX);d.text(lw[k],M+52,ry);ry+=Math.max(1,lw[k].length)*5+3;});
+  y+=hb+6;});
+ saut(16);d.setFillColor(...CL);d.rect(M,y,L,12,'F');d.setFont('helvetica','bold');d.setFontSize(11);d.setTextColor(...FO);d.text('Mon point d\'étape : le '+fr($('#point').value),M+4,y+7.8);
+ pied();d.save('mon_engagement_gestion_du_temps.pdf');}
+$('#btnReset').onclick=()=>{if(confirm('Recommencer votre plan ?'))init();};init();
+</script></body></html>
